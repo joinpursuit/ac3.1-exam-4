@@ -4,7 +4,7 @@ This coding exercise will require you to use AJAX, callbacks, and jQuery to make
 ## Countries API
 [This particular API does not require a key. Yay!](http://restcountries.eu/) You will need to use the `Country Code` API call and the `Country Name Full Text` API call.
 
-## Instructions
+## Instructionst
 ### Step 1
 Attach an event listener to the button. The callback registered to the event listener should send out an AJAX request for information on a country. **Every time you click the button, the input text box should also be cleared.**
 
