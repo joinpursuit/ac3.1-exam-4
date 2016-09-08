@@ -1,7 +1,12 @@
 function getCountryName(code) {
+
+    console.log('hello')    
+
     $.ajax({
+      // url: 'https://restcountries.eu/rest/v1/alpha/usa';
+      // success:;
       //uses the three letter code to get the country's full name
-      }
+      // }
     })
   }
 
@@ -15,7 +20,8 @@ function getCountryName(code) {
   button.addEventListener('click', function(){
 
     $.ajax({
-
+      url: 'https://restcountries.eu/rest/v1/alpha/usa',
+      success: getCountryName()
     })
   })
 
