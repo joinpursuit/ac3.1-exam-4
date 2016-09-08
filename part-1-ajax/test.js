@@ -1,25 +1,37 @@
 function getCountryName(code) {
     $.ajax({
-      //uses the three letter code to get the country's full name
+     
+      url:'https://restcountries.eu/rest/v1/name/?fullText=true'
+      success: function(data){
+        var code = data.Countries.url
+      }
       }
     })
   }
 
   function parseData(country) {
-    //takes the country data
-    //extracts the name, capital, population, and neighboring countries
-    //iterates through the neighbors array to send off second AJAX request
+    
+    var nation = data.Countries
+    for(var i = 0; i < nation.length; i++){
+      getCountryName(nation[i])
+    }
   }
-
+  var input = $(this).serializeArray()[0].value
   var button = document.getElementsByTagName('button')[0]
   button.addEventListener('click', function(){
 
     $.ajax({
+      url:'https://restcountries.eu/rest/v1/alpha/co'
+      success: function(data){
+        var geo = document.createElement('li')
+        $('ul').append(geo)
+      }
 
+    
     })
   })
 
-//When you search for a country you should receive a response that looks like:
+
 [ {
       "name": "Argentina",
       "topLevelDomain": [
