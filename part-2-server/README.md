@@ -1,10 +1,10 @@
-## Setup
+<!-- ## Setup
 Add all of the following files to this folder (the 'part-2-server' folder):
 - Add an `index.html` file to this folder. In your `index.html` file add an `h1` tag that says "Welcome to the home page"
 - Add a `page-2.html` file and within that file add an `h1` tag that says "Welcome to page 2...or page 3?"
 - Add a `server.js` file. This is where you'll write most of your code
 - Add a new file called `createPoemFiles.js` into your folder. This file will be used to create new files locally...you will not need to send this file as a response in your server
-- To test your app, run your `server.js` file and open up 'localhost:3000' (or whatever port number you set your server to listen to) in your browser
+- To test your app, run your `server.js` file and open up 'localhost:3000' (or whatever port number you set your server to listen to) in your browser -->
 
 ## Instructions
 Create a server in your `server.js` file that does the following:
