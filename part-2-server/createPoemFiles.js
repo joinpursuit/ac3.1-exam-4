@@ -23,3 +23,9 @@ var poem = [ 'Take', 'this', 'kiss', 'upon', 'the',
   'One','from','the','pitiless','wave?',
   'Is','all','that','we','see','or','seem',
   'But','a','dream','within','a','dream?' ]
+
+var fs = require('fs');
+for (var i = 0; i < poem.length; i++) {
+  var filename = "./poem/poem-" + i + '.txt'
+  fs.writeFile(filename, poem[i])
+}

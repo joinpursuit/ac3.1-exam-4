@@ -6,13 +6,23 @@ var server = http.createServer(function(req, res){
 
   function readFile(filename) {
     fs.readFile(filename, function (err, data){
-      res.write(data);
-      res.end();
+      if(err){
+        res.write('<h1>404</h1>');
+        res.end();
+      } else {
+        res.write(data);
+        res.end();
+      }
     })
   }
 
+  var poemUrl = url.substring(0, 6)
   if(url === "/") readFile('index.html');
   else if (url === "/page-2" || url === "/page-3") readFile('page-2.html');
+  else if(poemUrl === "/poem-") {
+    var num = url.substring(6)
+    readFile("poem/poem-" + num + '.txt')
+  }
   
 })
 
