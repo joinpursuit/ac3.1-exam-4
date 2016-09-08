@@ -6,8 +6,7 @@ var spanPop = document.getElementsByClassName('pop')[0];
 var ul = document.getElementsByTagName('ul')[0];
 var countryurlRoot = 'https://restcountries.eu/rest/v1/name/';
 var codeURLRoot = 'https://restcountries.eu/rest/v1/alpha/';
-var fulltextRoot = 'https://restcountries.eu/rest/v1/name/';
-var fulltextEnd = '?fullText=true';
+
 
 // ### Step 3 + 4:
 function makeAjax(arg) {
