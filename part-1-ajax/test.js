@@ -1,76 +1,67 @@
 function getCountryName(code) {
-    $.ajax({
-      //uses the three letter code to get the country's full name
-      }
-    })
-  }
+    // console.log(code);
+    console.log(code.name);
+    $("ul").append("<li>" + code.name + "</li>")
+}
 
-  function parseData(country) {
+function parseData(country) {
     //takes the country data
-    //extracts the name, capital, population, and neighboring countries
-    //iterates through the neighbors array to send off second AJAX request
-  }
+    console.log(country);
 
-  var button = document.getElementsByTagName('button')[0]
-  button.addEventListener('click', function(){
+    //extracts the name, capital, population, and neighboring countries
+    var name = country[0].name;
+    console.log('name: ', name)
+    $(".name").text(name);
+
+    var capital = country[0].capital;
+    console.log('capital: ', capital)
+    $(".cap").text(capital);
+    
+
+    var population = country[0].population;
+    console.log('population: ', population)
+    $(".pop").text(population);
+
+    //iterates through the neighbors array to send off second AJAX request
+    var arrNeighbors = country[0].borders;
+    for (var i = 0; i < arrNeighbors.length; i++) {
+        // console.log(arrNeighbors[i]);
+
+        //https://restcountries.eu/rest/v1/alpha/col
+        var root = "https://restcountries.eu/rest/v1/alpha/";
+        var countryCode = arrNeighbors[i];
+        var countryCodeUrl = root + countryCode;
+        // console.log('countryCodeUrl: ', countryCodeUrl)
+
+        $.ajax({
+            url: countryCodeUrl,
+            success: getCountryName,
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        })
+    }
+}
+
+var button = document.getElementsByTagName('button')[0]
+button.addEventListener('click', function() {
+
+
+    // https://restcountries.eu/rest/v1/name/aruba?fullText=true
+    var root = "https://restcountries.eu/rest/v1/name/";
+    // console.log('root', root)
+    var input = $("input").val()
+    // console.log('input', input)
+    var fullText = "?fullText=true";
+    // console.log('fullText', fullText);
+    countryFNameUrl = root + input + fullText;
+    console.log('Country Code URL: ', countryFNameUrl);
 
     $.ajax({
-
+        url: countryFNameUrl,
+        success: parseData,
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
     })
-  })
-
-//When you search for a country you should receive a response that looks like:
-[ {
-      "name": "Argentina",
-      "topLevelDomain": [
-          ".ar"
-      ],
-      "alpha2Code": "AR",
-      "alpha3Code": "ARG",
-      "currencies": [
-          "ARS"
-      ],
-      "callingCodes": [
-          "54"
-      ],
-      "capital": "Buenos Aires",
-      "altSpellings": [
-          "AR",
-          "Argentine Republic",
-          "República Argentina"
-      ],
-      "relevance": "0",
-      "region": "Americas",
-      "subregion": "South America",
-      "languages": [
-          "es",
-          "gn"
-      ],
-      "translations": {
-          "de": "Argentinien",
-          "es": "Argentina",
-          "fr": "Argentine",
-          "ja": "アルゼンチン",
-          "it": "Argentina"
-      },
-      "population": 43131966,
-      "latlng": [
-          -34,
-          -64
-      ],
-      "demonym": "Argentinean",
-      "area": 2780400,
-      "gini": 44.5,
-      "timezones": [
-          "UTC−03:00"
-      ],
-      "borders": [
-          "BOL",
-          "BRA",
-          "CHL",
-          "PRY",
-          "URY"
-      ],
-      "nativeName": "Argentina"
-  }
-]
+})
